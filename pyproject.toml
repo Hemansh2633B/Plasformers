@@ -13,15 +13,52 @@ license = { text = "Apache-2.0" }
 dependencies = [
   "torch>=2.2",
   "pyyaml>=6.0",
-  "numpy>=1.24"
+  "numpy>=1.24",
+  "typer>=0.12",
+  "rich>=13.0",
+  "pydantic>=2.0",
+  "pillow>=10.0"
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8.0", "ruff>=0.4"]
-export = ["onnx>=1.15", "onnxruntime>=1.17"]
+dev = ["pytest>=8.0", "ruff>=0.4", "mypy>=1.8", "bandit>=1.7"]
+export = ["onnx>=1.15", "onnxruntime>=1.17", "openvino>=2024.0"]
+serve = ["fastapi>=0.110", "uvicorn[standard]>=0.27", "python-multipart>=0.0.9", "grpcio>=1.60"]
+ui = ["gradio>=4.0", "opencv-python>=4.8"]
+automl = ["optuna>=3.5", "ray[tune]>=2.9"]
+mlops = ["mlflow>=2.10", "dvc>=3.0", "huggingface_hub>=0.20", "wandb>=0.16"]
+foundation = ["transformers>=4.40", "diffusers>=0.27", "accelerate>=0.28"]
+distributed = ["deepspeed>=0.14", "triton>=2.2"]
+all = [
+  "pytest>=8.0",
+  "ruff>=0.4",
+  "mypy>=1.8",
+  "bandit>=1.7",
+  "onnx>=1.15",
+  "onnxruntime>=1.17",
+  "openvino>=2024.0",
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.27",
+  "python-multipart>=0.0.9",
+  "grpcio>=1.60",
+  "gradio>=4.0",
+  "opencv-python>=4.8",
+  "optuna>=3.5",
+  "ray[tune]>=2.9",
+  "mlflow>=2.10",
+  "dvc>=3.0",
+  "huggingface_hub>=0.20",
+  "wandb>=0.16",
+  "transformers>=4.40",
+  "diffusers>=0.27",
+  "accelerate>=0.28"
+]
+
+[project.scripts]
+plas = "plas.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["plasformers*"]
+include = ["plasformers*", "plas*"]
 
 [tool.ruff]
 line-length = 100

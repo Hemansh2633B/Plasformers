@@ -1,0 +1,12 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: plasformers
+spec:
+  predictor:
+    containers:
+      - name: plasformers
+        image: plasformers:latest
+        args: ["plas", "serve", "--host", "0.0.0.0", "--port", "8080"]
+        ports:
+          - containerPort: 8080

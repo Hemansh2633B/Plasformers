@@ -1,0 +1,8 @@
+{
+  "name": "Plasformers Vision Platform",
+  "provider": "aws",
+  "image": "public.ecr.aws/example/plasformers:latest",
+  "description": "Full-stack computer vision platform for ECS, EKS, SageMaker, and serverless inference.",
+  "support_url": "https://example.com/support",
+  "license": "Apache-2.0"
+}

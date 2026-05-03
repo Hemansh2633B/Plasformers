@@ -1,0 +1,8 @@
+{
+  "name": "Plasformers Vision Platform",
+  "provider": "azure",
+  "image": "example.azurecr.io/plasformers:latest",
+  "description": "Enterprise computer vision platform for AKS, Azure ML, and managed online endpoints.",
+  "support_url": "https://example.com/support",
+  "license": "Apache-2.0"
+}

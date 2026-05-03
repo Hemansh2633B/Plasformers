@@ -1,0 +1,8 @@
+{
+  "name": "Plasformers Vision Platform",
+  "provider": "gcp",
+  "image": "gcr.io/example/plasformers:latest",
+  "description": "Cloud-native vision platform for GKE, Vertex AI, TPU VM, and serverless inference.",
+  "support_url": "https://example.com/support",
+  "license": "Apache-2.0"
+}

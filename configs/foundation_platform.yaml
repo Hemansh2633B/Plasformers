@@ -1,0 +1,43 @@
+platform: plasformers
+mode: foundation_vision_os
+tasks:
+  enabled:
+    - classification
+    - detection
+    - instance_segmentation
+    - semantic_segmentation
+    - panoptic_segmentation
+    - pose_estimation
+    - oriented_bounding_boxes
+    - multi_object_tracking
+    - visual_grounding
+    - referring_expression_comprehension
+    - image_captioning
+    - ocr
+    - document_understanding
+    - visual_question_answering
+    - depth_estimation
+    - optical_flow
+    - 3d_object_detection
+    - video_understanding
+multimodal:
+  clip_style_dual_encoder: true
+  contrastive_pretraining: true
+  open_vocabulary_detection: true
+  promptable_detection: true
+self_supervised:
+  methods: [masked_autoencoding, contrastive, dino, byol, simclr, moco, ijepa]
+synthetic_data:
+  blender: true
+  unreal: true
+  physics_hooks: true
+runtime:
+  distributed: [ddp, fsdp, deepspeed_zero, pipeline_parallel, tensor_parallel, sequence_parallel]
+  tpu: [v5e, v6, pjrt, xla]
+  compiler: [torchinductor, triton, cuda_graphs, flashattention]
+enterprise:
+  signed_checkpoints: true
+  dataset_lineage: true
+  audit_trails: true
+  model_registry: true
+  marketplace: true

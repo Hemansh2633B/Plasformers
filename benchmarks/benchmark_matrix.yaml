@@ -1,0 +1,21 @@
+devices:
+  - cpu
+  - cuda
+variants:
+  - nano
+  - small
+  - base
+  - large
+  - xlarge
+inputs:
+  - [1, 3, 640, 640]
+  - [1, 3, 960, 960]
+metrics:
+  - fps
+  - latency_ms
+  - throughput
+  - memory_mb
+  - params_m
+  - flops_g_estimate
+  - energy_j
+  - tensor_core_utilization

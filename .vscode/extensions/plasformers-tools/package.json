@@ -1,0 +1,22 @@
+{
+  "name": "plasformers-tools",
+  "displayName": "Plasformers Tools",
+  "version": "0.1.0",
+  "publisher": "plasformers",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": ["Machine Learning"],
+  "contributes": {
+    "commands": [
+      {
+        "command": "plasformers.profile",
+        "title": "Plasformers: Profile Model"
+      },
+      {
+        "command": "plasformers.graph",
+        "title": "Plasformers: Open Graph Explorer"
+      }
+    ]
+  }
+}

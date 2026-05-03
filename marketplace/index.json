@@ -1,0 +1,20 @@
+[
+  {
+    "name": "plasformers-foundation-tasks",
+    "kind": "plugin",
+    "version": "0.1.0",
+    "description": "Default universal task heads and task specifications.",
+    "source": "plas.foundation.tasks",
+    "sha256": null,
+    "tags": ["tasks", "foundation", "heads"]
+  },
+  {
+    "name": "edge-deployment-recipes",
+    "kind": "deployment_recipe",
+    "version": "0.1.0",
+    "description": "Jetson, Raspberry Pi, Coral TPU, Android NNAPI, and Apple Neural Engine recipes.",
+    "source": "deployments/mobile",
+    "sha256": null,
+    "tags": ["edge", "mobile", "deployment"]
+  }
+]

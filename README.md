@@ -44,7 +44,9 @@ Unified outputs: boxes, objectness, classes, optional masks, optional keypoints
 ## Quick Start
 
 ```bash
-pip install -e ".[dev,export]"
+pip install -e ".[dev,export,serve,ui]"
+plas doctor
+plas zoo
 python scripts/benchmark.py --variant nano --height 640 --width 640 --amp --export-mode
 python scripts/export_onnx.py --variant base --output exports/plasformers_base.onnx
 ```
@@ -58,15 +60,37 @@ model.eval()
 
 ## Training And Deployment
 
+- Unified CLI: `plas train|val|predict|export|benchmark|profile|tune|prune|quantize|distill|serve|track|explain|doctor`
+- Foundation platform APIs: multi-task heads, VLM dual encoders, SSL, synthetic data, NAS, FL, continual learning, world models, diffusion, governance, registry, and marketplace
 - Training recipe: `configs/train_coco.yaml`
 - Domain adaptation profiles: `configs/train_aerial_medical_industrial.yaml`
 - AMP, EMA, DDP, and optional XLA hooks: `plasformers/training.py`
 - ONNX export: `scripts/export_onnx.py`
 - Latency smoke benchmark: `scripts/benchmark.py`
+- REST/WebSocket serving: `plas serve`
+- Interactive Gradio UI: `plas web`
+- Auto-completion: `plas --install-completion`
 
 ## Repository Structure
 
 ```text
+plas/
+  cli.py             unified command-line interface
+  apps/              Gradio web UI
+  compression/       pruning, sparsity, and quantization
+  core/              config, security, plugins, doctor, experiments
+  data/              dataset validation, conversion, duplicate analysis
+  engine/            inference, export, benchmark, profile
+  monitoring/        W&B, TensorBoard, CSV, JSONL loggers
+  serve/             FastAPI, WebSocket, gRPC hooks
+  tracking.py        ByteTrack-style tracker and zone counting
+  explain.py         Grad-CAM, Eigen-CAM, attention rollout
+  foundation/        universal tasks and multimodal models
+  agents/            agentic visual workflows
+  research/          SSL, synthetic data, NAS, FL, continual, RL, world, diffusion
+  runtime/           hardware, distributed, TPU, compiler, autoscaling
+  enterprise/        security, governance, registry, collaboration
+  ecosystem/         marketplace, benchmark arena, copilot, academic, DX
 plasformers/
   config.py          scaling family definitions
   modules.py         stem, tri-path blocks, spectral path, neck primitives
@@ -81,8 +105,17 @@ configs/
   train_aerial_medical_industrial.yaml
 docs/
   architecture.md
+  framework.md
   paper.md
   ablation_plan.md
+deployments/
+  docker/
+  kubernetes/
+  mobile/
+examples/
+benchmarks/
+plugins/
+notebooks/
 scripts/
   export_onnx.py
   benchmark.py
