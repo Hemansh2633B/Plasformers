@@ -1,0 +1,81 @@
+experiment: plasformers_base_coco
+model:
+  variant: base
+  num_classes: 80
+  input_size: [640, 640]
+  reg_max: 16
+  use_fft: true
+  export_mode: false
+data:
+  dataset: coco
+  train_images: /data/coco/train2017
+  train_annotations: /data/coco/annotations/instances_train2017.json
+  val_images: /data/coco/val2017
+  val_annotations: /data/coco/annotations/instances_val2017.json
+augmentation:
+  mosaic:
+    prob: 1.0
+    close_last_epochs: 15
+  copy_paste:
+    prob: 0.35
+  mixup:
+    prob: 0.15
+    alpha: 8.0
+  hsv:
+    hgain: 0.015
+    sgain: 0.70
+    vgain: 0.40
+  random_affine:
+    degrees: 10.0
+    translate: 0.10
+    scale: [0.25, 2.00]
+    shear: 2.0
+  dynamic_image_scaling:
+    min_size: 512
+    max_size: 960
+    step: 32
+optimization:
+  epochs: 500
+  batch_size: 128
+  optimizer: adamw
+  base_lr: 0.0012
+  weight_decay: 0.05
+  warmup_epochs: 5
+  scheduler: cosine
+  ema:
+    enabled: true
+    decay: 0.9999
+  amp:
+    enabled: true
+    dtype: float16
+  gradient_clip_norm: 10.0
+  gradient_checkpointing:
+    enabled: true
+    modules: [backbone.stage_modules.2, backbone.stage_modules.3, backbone.stage_modules.4]
+assignment:
+  primary: task_aligned
+  topk: 13
+  alpha: 1.0
+  beta: 6.0
+  one_to_many_auxiliary:
+    enabled: true
+    topk: 30
+loss:
+  classification: varifocal
+  bbox: siou
+  dfl_weight: 1.5
+  bbox_weight: 7.5
+  cls_weight: 1.0
+  objectness_weight: 0.5
+  consistency_weight: 0.25
+curriculum:
+  phase_1_epochs: 40
+  phase_1_max_size: 640
+  phase_2_epochs: 320
+  phase_2_max_size: 960
+  phase_3_finetune_epochs: 140
+  phase_3_mosaic: false
+deployment_validation:
+  onnx_opset: 17
+  tensorrt_fp16: true
+  int8_qat_after_epoch: 420

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plasformers"
+version = "0.1.0"
+description = "Plasformers: Progressive Local-Attentive Spectral Formers for real-time object detection"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Plasformers Authors" }]
+license = { text = "Apache-2.0" }
+dependencies = [
+  "torch>=2.2",
+  "pyyaml>=6.0",
+  "numpy>=1.24"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4"]
+export = ["onnx>=1.15", "onnxruntime>=1.17"]
+
+[tool.setuptools.packages.find]
+include = ["plasformers*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

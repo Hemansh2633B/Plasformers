@@ -1,0 +1,44 @@
+profiles:
+  aerial:
+    input_size: [1024, 1024]
+    tiling:
+      enabled: true
+      tile_size: 1024
+      overlap: 0.20
+    augmentation:
+      copy_paste_prob: 0.45
+      rotate90_prob: 0.50
+      small_object_oversample: 2.0
+    assignment:
+      topk: 20
+      center_radius: 3.0
+  medical:
+    input_size: [768, 768]
+    channels: 3
+    normalization: per_study_zscore
+    augmentation:
+      elastic_prob: 0.20
+      low_contrast_prob: 0.35
+      blur_prob: 0.20
+    loss:
+      bbox: ciou
+      classification: focal
+      consistency_weight: 0.50
+  industrial_defect:
+    input_size: [832, 832]
+    augmentation:
+      copy_paste_prob: 0.55
+      synthetic_scratch_prob: 0.25
+      low_light_prob: 0.30
+    hard_negative_mining:
+      enabled: true
+      queue_size: 20000
+  autonomous:
+    input_size: [768, 1344]
+    augmentation:
+      motion_blur_prob: 0.30
+      weather_prob: 0.25
+      cutout_prob: 0.20
+    temporal_distillation:
+      enabled: true
+      teacher_stride: 2

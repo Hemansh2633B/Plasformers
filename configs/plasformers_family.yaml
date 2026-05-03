@@ -1,0 +1,52 @@
+family: plasformers
+acronym: Progressive Local-Attentive Spectral Fusion with Object-query Routing for Multi-scale Efficient Real-time Sensing
+input:
+  default_size: [640, 640]
+  arbitrary_resolution: true
+  normalization: imagenet
+outputs:
+  levels: [P3, P4, P5, P6, P7]
+  strides: [8, 16, 32, 64, 128]
+  anchor_free: true
+  reg_max: 16
+variants:
+  nano:
+    width_mult: 0.375
+    depth_mult: 0.34
+    pyramid_channels: 96
+    expected_params_m: 3.9
+    expected_flops_g_640: 8.7
+    target_t4_trt_fp16_fps: 520
+    target_coco_ap: 44.2
+  small:
+    width_mult: 0.50
+    depth_mult: 0.50
+    pyramid_channels: 128
+    expected_params_m: 8.8
+    expected_flops_g_640: 19.6
+    target_t4_trt_fp16_fps: 390
+    target_coco_ap: 49.7
+  base:
+    width_mult: 0.75
+    depth_mult: 0.75
+    pyramid_channels: 192
+    expected_params_m: 22.4
+    expected_flops_g_640: 56.0
+    target_t4_trt_fp16_fps: 255
+    target_coco_ap: 56.1
+  large:
+    width_mult: 1.00
+    depth_mult: 1.00
+    pyramid_channels: 256
+    expected_params_m: 41.8
+    expected_flops_g_640: 108.0
+    target_t4_trt_fp16_fps: 172
+    target_coco_ap: 57.2
+  xlarge:
+    width_mult: 1.25
+    depth_mult: 1.20
+    pyramid_channels: 320
+    expected_params_m: 73.5
+    expected_flops_g_640: 196.0
+    target_t4_trt_fp16_fps: 112
+    target_coco_ap: 58.4
