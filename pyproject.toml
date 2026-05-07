@@ -63,3 +63,38 @@ include = ["plasformers*", "plas*"]
 [tool.ruff]
 line-length = 100
 target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "unit: unit tests",
+    "integration: integration tests",
+    "system: system tests",
+    "slow: slow tests",
+    "gpu: requires GPU",
+    "tpu: requires TPU",
+    "export: export tests",
+    "benchmark: performance benchmarks",
+    "resilience: failure injection tests",
+    "security: security and integrity tests",
+    "distributed: distributed training tests",
+    "hardware: hardware-specific tests",
+]
+
+[tool.coverage.run]
+source = ["plas", "plasformers"]
+omit = ["tests/*", "*/__init__.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "if self.export_mode:",
+]
